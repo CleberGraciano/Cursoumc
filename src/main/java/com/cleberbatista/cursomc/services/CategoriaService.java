@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.cleberbatista.cursomc.services.exceptions.ObjectNotFoundException;
 
 import com.cleberbatista.cursomc.domain.Categoria;
 import com.cleberbatista.cursomc.repositories.CategoriaRepository;
@@ -18,7 +19,7 @@ public class CategoriaService {
 
 		Optional<Categoria> obj = repo.findById(id); 
 
-		return obj.orElseThrow(() -> new com.cleberbatista.cursomc.services.exceptions.ObjectNotFoundException(
+		return obj.orElseThrow(() -> new ObjectNotFoundException(
 				"Objeto não encontrado! Id: " + id + ", Tipo: " + Categoria.class.getName()));
 	}
 
