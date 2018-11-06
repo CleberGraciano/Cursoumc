@@ -16,9 +16,10 @@ public class CategoriaService {
 
 	public Categoria buscar(Integer id) {
 
-		Optional<Categoria> obj = repo.findById(id);
+		Optional<Categoria> obj = repo.findById(id); 
 
-		return obj.orElse(null);
+		return obj.orElseThrow(() -> new com.cleberbatista.cursomc.services.exceptions.ObjectNotFoundException(
+				"Objeto não encontrado! Id: " + id + ", Tipo: " + Categoria.class.getName()));
 	}
 
 }
